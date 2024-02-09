@@ -7,8 +7,8 @@ Why packaging ?
 
 
 # Packaging terms:
-- Module 
-- Package
+- Module : a sigle portion of one of this import statements (can be single file , also can be folder that contains __init__.py )
+- Package (folder contain __init__.py file)
 - sub-package
 - distribution package 
 
