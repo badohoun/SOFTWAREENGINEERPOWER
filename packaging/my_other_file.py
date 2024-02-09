@@ -1,1 +1,1 @@
-CONSTANT = "bonjour"
+CONSTANT = "man"
