@@ -1,7 +1,7 @@
 from setuptools import setup , find_packages
-
+import wheel 
 setup(
-    name='packaging',
+    name='packaging_demo',
     version='0.0.0',
     packages=find_packages(),
     # include any additional files needed by the package
@@ -13,5 +13,5 @@ setup(
     license='MIT',
     install_requires=[
         "numpy==1.24.3"
-    ]
+    ],
 )
