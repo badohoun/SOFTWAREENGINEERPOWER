@@ -8,9 +8,9 @@ Why packaging ?
 
 # Packaging terms:
 - Module : a sigle portion of one of this import statements (can be single file , also can be folder that contains __init__.py )
-- Package (folder contain __init__.py file)
-- sub-package
-- distribution package 
+- Package (basically folder contain __init__.py file)
+- sub-package 
+- distribution package to fix import problems we see earlier  (is basically a zip file containing all the python files if you go the pypi.org you will see things like  numpy, pandas , pytorch , fastapi , ... called all those things that will pipi install packages but technically the correct term is distribution packages  for the rest of course we will use the terms distribution packages to minimize confusion)
 
 
 # Modern way to build package :
@@ -23,7 +23,7 @@ Why packaging ?
    3. Is insecure: setup.py may contain  arbitrary code.
 * the  good and new  format distribution is wheel 
    1. First install wheel package 
-   2. the command help us to build wheel package : python setup.py bdist_wheel 
+   2. the command help us to build wheel package : python setup.py bdist_wheel after install wheel with command pip install wheel 
    3.  realpython.com/python-wheels/ explain clearly how to read wheel format 
    4.  we need to add build dependencies  for reproducibility and for it we need pyproject.toml file and install build tool : pip install build 
    5. escaping config hell; use setup.cfg : https://setuptools.pypa.io/en/latest/userguide/declarative_config.html
