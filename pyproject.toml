@@ -2,6 +2,38 @@
 # Minimum requirements for the build system to execute.
 requires = ["setuptools", "wheel"] # PEP 508 specifications.
 
+[tool.black]
+line-length = 119
+exclude = ["venv"]
+
+[tool.flake8]
+docstring-convention = "all"
+ignore = ["D107", "D212", "E501", "W503", "W605", "D203"]
+exclude = ["venv"]
+max-line-length = 99
+
+# radon 
+radon-max-cc = 10
+
+
+[tool.isort]
+profile = "black"
+multi_line_output = "VERTICAL_HANGING_INDENT"
+force_grid_wrap = 2
+line_length = 99
+
+
+[tool.pylint."messages control"]
+disable = [
+    "line-too-long",
+    "trailing-whitespace",
+    "missing-function-docstring",
+    "consider-using-f-string",
+    "import-error",
+    "too-few-public-methods",
+    "redefined-outer-name",
+]
+
 [tool.ruff]
 # Enable flake8-bugbear (`B`) rules.
 select = ["E", "F", "B", "ERA"]
