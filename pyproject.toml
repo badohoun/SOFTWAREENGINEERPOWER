@@ -1,6 +1,28 @@
 [build-system]
 # Minimum requirements for the build system to execute.
-requires = ["setuptools", "wheel"] # PEP 508 specifications.
+requires = ["setuptools>=61.0.0", "wheel"] # PEP 508 specifications.
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "packaging_demo"
+authors = [{ name = "Josiah Carberry", email = "josiah_carberry@brown.edu" }]
+description = "My package description"
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = ["one", "two"]
+license = { text = "MIT" }
+classifiers = ["Programming Language :: Python :: 3"]
+dependencies = ["numpy", 'importlib-metadata; python_version<"3.10"']
+#dynamic = ["version"]
+version = "0.0.0"
+
+
+[project.scripts]
+my-script = "my_package.module:function"
+
+# ... other project metadata fields as listed in:
+#     https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
+
 
 [tool.black]
 line-length = 119
