@@ -3,6 +3,9 @@
 requires = ["setuptools>=61.0.0", "wheel"] # PEP 508 specifications.
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools.package-data]
+packaging_demo = ["*.json"]
+
 
 [project]
 name = "packaging_demo"
