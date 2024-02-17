@@ -41,11 +41,33 @@ Why packaging ?
  
 
  # Reproducibility 
+ minimal document the librairies you use
+ never run pip install directly in your projects you can use optionnal level  1 to add the library or better pyproject.toml 
+
+ How to reproduce(ish) these results:
+
+   install the python and non-python dependencies
+pip install -r requirements.txt
+brew install graphviz
+
+  generate the dependency graphs for a library by downloading many versions of it
+python generate_dependency_graph.py fastapi
+
+  generate this README.md
+python generate_readme.py
+
 
  1. Dependency graph : add someting dependancies in pyproject.toml  and in terminal tape this command pip install -e.
-2. visualize all dépendencies tree  of python libraries  use cli tool call  pipdeptree : pipdeptree --help , pipdeptree -p packaging-demo --grph-output png > dependency-graph.png , pip install graphviz  , and brew install graphviz or sudo apt-get install graphviz help us to the issues dependencies hell : constraint-trees (datascientist didn't document version of the dependencies we use ) the more library  they more constraints you have you had they more dependencies you have lot of constraints 
-3. Document all of the exact version of library and the exact  python version and in addition of that you documented  opération system : m series mcbook , linus ..etc  the solution to this is  if you run pip freeze  : this is most vanilla way in python to freeze or lock your dependencies list : set of the exact version that satisfied constraint pip freeze > requirements.txt useful for developpment reproducibilty  poetry , pip-tools same willl help you .
-4. you can add [project.optional-dependencies]
+   
+1. visualize all dépendencies tree  of python libraries  use cli tool call  pipdeptree : pipdeptree --help , pipdeptree -p packaging-demo --grph-output png > dependency-graph.png , pip install graphviz  , and brew install graphviz or sudo apt-get install graphviz help us to the issues dependencies hell : constraint-trees (datascientist didn't document version of the dependencies we use ) the more library  they more constraints you have you had they more dependencies you have lot of constraints 
+2. Document all of the exact version of library and the exact  python version and in addition of that you documented  opération system : m series mcbook , linus ..etc  the solution to this is  if you run pip freeze  : this is most vanilla way in python to freeze or lock your dependencies list : set of the exact version that satisfied constraint pip freeze > requirements.txt useful for developpment reproducibilty  poetry , pip-tools same willl help you .
+   You can generate a lock file a few different ways:
+
+         - pip: pip freeze > requirements.txt
+         - pip-tools: pip-compile --output-file requirements.txt requirements.in
+         - poetry
+         - pipenv
+3. you can add [project.optional-dependencies]
 dev = ["ruff" , "mypy" , "black"] and after that run in terminal pip install '.[dev]' the same for rich add colors = ["rich] pip install '.[rich]' or pip install '.[colors,dev]' or  all = ["packaging_demo[dev , colors]"] and pip install '.[all]' package index search : snyk.io/advisor/python/package-index ( give you criteria to check package health in terms of security maintenance , community )
 
 
