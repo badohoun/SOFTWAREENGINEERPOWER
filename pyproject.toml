@@ -21,8 +21,10 @@ dependencies = ["fastapi"]
 version = "0.0.0"
 
 [project.optional-dependencies]
-dev = ["ruff", "mypy", "black"]
-colors = ["rich"]
+test = ["pytest", "pytest-cov"]
+release = ["build", "twine"]
+static-code-qa = ["pre-commit"]
+dev = ["packaging-demo[test,release,static-code-qa]"]
 
 
 [tool.black]
@@ -35,7 +37,7 @@ ignore = ["D107", "D212", "E501", "W503", "W605", "D203"]
 exclude = ["venv"]
 max-line-length = 99
 
-# radon 
+# radon
 radon-max-cc = 10
 
 

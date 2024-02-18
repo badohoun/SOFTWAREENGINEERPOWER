@@ -1,8 +1,5 @@
-PACKAGE_DIR=./
-
-
 install:
-	echo "hello"
+	/bin/bash ./run.sh install
 
-build:
-	python -m build --sdist --wheel "${PACKAGE_DIR}"
+lint:
+	/bin/bash ./run.sh lint
