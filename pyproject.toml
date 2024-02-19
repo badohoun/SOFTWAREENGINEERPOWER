@@ -8,7 +8,7 @@ packaging_demo = ["*.json"]
 
 
 [project]
-name = "packaging_demo"
+name = "packaging-coursdemo"
 authors = [{ name = "Josiah Carberry", email = "josiah_carberry@brown.edu" }]
 description = "My package description"
 readme = "README.md"
@@ -18,7 +18,7 @@ license = { text = "MIT" }
 classifiers = ["Programming Language :: Python :: 3"]
 dependencies = ["fastapi"]
 #dynamic = ["version"]
-version = "0.0.0"
+version = "0.0.5"
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov"]
