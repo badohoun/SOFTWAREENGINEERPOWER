@@ -18,13 +18,13 @@ license = { text = "MIT" }
 classifiers = ["Programming Language :: Python :: 3"]
 dependencies = ["fastapi"]
 #dynamic = ["version"]
-version = "0.0.5"
+version = "0.0.6"
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov"]
 release = ["build", "twine"]
 static-code-qa = ["pre-commit"]
-dev = ["packaging-demo[test,release,static-code-qa]"]
+dev = ["packaging-coursdemo[test,release,static-code-qa]"]
 
 
 [tool.black]
