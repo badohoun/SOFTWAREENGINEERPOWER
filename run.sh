@@ -41,8 +41,7 @@ function publish:test {
     twine upload dist/* \
         --repository testpypi \
         --username=__token__ \
-        --password="$TEST_PYPI_TOKEN" \
-        --verbose
+        --password="$TEST_PYPI_TOKEN"
 }
 
 
@@ -51,8 +50,7 @@ function publish:prod {
     twine upload dist/* \
         --repository pypi \
         --username=__token__ \
-        --password="$PROD_PYPI_TOKEN" \
-        --verbose
+        --password="$PROD_PYPI_TOKEN" 
 }
 
 
