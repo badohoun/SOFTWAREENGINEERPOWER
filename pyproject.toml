@@ -18,7 +18,7 @@ license = { text = "MIT" }
 classifiers = ["Programming Language :: Python :: 3"]
 dependencies = ["fastapi"]
 #dynamic = ["version"]
-version = "0.0.7"
+version = "0.0.9"
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov"]
