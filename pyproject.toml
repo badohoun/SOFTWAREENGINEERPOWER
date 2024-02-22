@@ -1,7 +1,7 @@
 [build-system]
 # Minimum requirements for the build system to execute.
 requires = ["setuptools>=61.0.0", "wheel"] # PEP 508 specifications.
-build-backend = "setuptools.build_meta"
+#build-backend = "setuptools.build_meta"
 
 [tool.setuptools.package-data]
 packaging_demo = ["*.json"]
