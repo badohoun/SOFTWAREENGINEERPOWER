@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 packaging_demo = ["*.json"]
 
 [project]
-name = "packaging-demo-espoir"
+name = "packaging-coursdemo"
 authors = [{ name = "Espoir Badohoun", email = "some-email@gmail.com" }]
 description = "My package description"
 readme = "README.md"
@@ -22,7 +22,7 @@ dynamic = ["version"]
 test = ["pytest", "pytest-cov"]
 release = ["build", "twine"]
 static-code-qa = ["pre-commit"]
-dev = ["packaging-demo-espoir[test,release , static-code-qa]"]
+dev = ["packaging-coursdemo[test,release , static-code-qa]"]
 
 [tool.setuptools.dynamic]
 version = { file = "version.txt" }
