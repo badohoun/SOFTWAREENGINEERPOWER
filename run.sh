@@ -24,10 +24,44 @@ function lint:ci {
 }
 
 function test:quick {
-    python -m pytest -m 'not slow' "$THIS_DIR/tests/"
+    # save the exit status of tests 
+    PYTEST_EXIT_STATUS=0
+    python -m pytest -m 'not slow' "$THIS_DIR/tests/" \
+    --cov "$THIS_DIR/packaging_demo" \
+    --cov-report html \
+    --cov-report term \
+    --cov-report xml \
+    --junit-xml "$THIS_DIR/test-reports/report.xml" \
+    --cov-fail-under 50 || ((PYTEST_EXIT_STATUS+=$?))
+    mv coverage.xml "$THIS_DIR/test-reports/"
+    mv htmlcov "$THIS_DIR/test-reports/"
+    return $PYTEST_EXIT_STATUS
 }
 
+# (example) ./run.sh test tests/tests_slow.py::test__slow_add
 function test {
+    # save the exit status of tests 
+    PYTEST_EXIT_STATUS=0
+    # run only specified tests , if none specified , run all
+    python -m pytest "${@:-$THIS_DIR/tests/}" \
+           --cov "$THIS_DIR/packaging_demo" \
+           --cov-report html \
+           --cov-report term \
+           --cov-report xml \
+           --junit-xml "$THIS_DIR/test-reports/report.xml" \
+           --cov-fail-under 50 || ((PYTEST_EXIT_STATUS+=$?))
+    mv coverage.xml "$THIS_DIR/test-reports/"
+    mv htmlcov "$THIS_DIR/test-reports/"
+    return $PYTEST_EXIT_STATUS
+
+}
+
+
+function serve-coverage-report {
+    python -m http.server --directory "$THIS_DIR/htmlcov/"
+}
+
+function test:all {
     # run only specified tests , if none specified , run all
     if [ $# -eq 0 ]; then  
        python -m pytest  "$THIS_DIR/tests/" \
@@ -74,13 +108,14 @@ function publish:prod {
 
 
 function clean {
-    rm -rf dist build
+    rm -rf dist build coverage.xml test-reports 
     find . \
       -type d \
       \( \
         -name "*cache*" \
         -o -name "*.dist-info" \
         -o -name "*.egg-info" \
+        -o -name "*htmlcov" \
       \) \
       -not -path "./venv/*" \
       -exec rm -r {} +
