@@ -23,6 +23,18 @@ function lint:ci {
     SKIP=no-commit-to-branch 
 }
 
+function test:quick {
+    python -m pytest -m 'not slow' "$THIS_DIR/tests/"
+}
+
+function test:all {
+    # run only specified tests , if none specified , run all
+    if [ $# -eq 0 ]; then 
+       python -m pytest  "$THIS_DIR/tests/"
+    else 
+       python -m pytest "$@"
+    fi 
+}
 
 function build {
    python -m build --sdist --wheel "$THIS_DIR/"
